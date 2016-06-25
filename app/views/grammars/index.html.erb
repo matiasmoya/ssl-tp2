@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="section">
+    <h5>Grammar Checker</h5>
+    <p>La applicacion verificara que tipo de gramatica ingresaste, segun la jerarquia de Chomsky. Por ejemplo:</p>
+
+    <pre>
+      S aBaA
+      S AB
+      A BcC
+      B c
+      C A
+    </pre>
+
+    <p>Eso dara como resultado una gramatica de tipo 2 por que la ultima regla no cumple con los requisitos para las gramaticas de tipo 3.</p>
+  </div>
+  <div class="row">
+    <form class="col s12" data-url=<%= new_grammar_path %>>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea">
+            </textarea>
+          <label for="textarea1">Textarea</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <button class="btn waves-effect waves-light js-submit" type="submit" name="action">Verificar
+    <i class="material-icons right">send</i>
+  </button>
+  <span class="btn waves-effect waves-light js-result deep-purple accent-2">
+    Resultado: 
+  </span>
+</div>
+
+<script type="text/javascript">
+  $('.js-result').hide();
+  $('#textarea1').val("S aBaA\nS AB\nA BcC\nB c\nC A");
+  $('.js-submit').on('click', function(){
+    var grammar = $('#textarea1').val();
+    var url = $('form').data('url');
+
+    $.ajax({
+      url: url,
+      data: {"grammar": grammar},
+      success: function(response){
+        $('.js-result').fadeIn(1000);
+        $('.js-result').html("Resultado: " + response);
+      }
+    })
+  });
+</script>
