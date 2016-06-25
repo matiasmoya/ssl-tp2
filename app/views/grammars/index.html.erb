@@ -19,17 +19,27 @@
         <div class="input-field col s12">
           <textarea id="textarea1" class="materialize-textarea">
             </textarea>
-          <label for="textarea1">Textarea</label>
+          <label for="textarea1">Gramatica: </label>
         </div>
       </div>
     </form>
   </div>
 
-  <button class="btn waves-effect waves-light js-submit" type="submit" name="action">Verificar
-    <i class="material-icons right">send</i>
-  </button>
-  <span class="btn waves-effect waves-light js-result deep-purple accent-2">
-    Resultado: 
+  <div class="row">
+    <div class="section">
+      <div class="col s12">
+        <span class="btn waves-effect waves-light js-result deep-purple accent-2"> 
+      </div>
+    </div>
+    <br>
+    <div class="divider"></div>
+    <div class="section">
+      <div class="col s12">
+        <button class="btn waves-effect waves-light js-submit" type="submit" name="action">Verificar
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
   </span>
 </div>
 
@@ -45,7 +55,7 @@
       data: {"grammar": grammar},
       success: function(response){
         $('.js-result').fadeIn(1000);
-        $('.js-result').html("Resultado: " + response);
+        $('.js-result').html(response);
       }
     })
   });
